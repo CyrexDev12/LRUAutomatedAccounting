@@ -1,0 +1,4 @@
+partID,lifeCycleStatus,commercialEOL,orderDate,receivedDate,unitCost,annualUsage,requiresRedesign,criticalityScore,failRate,totalPopulation,totalSuppliers,isItar
+P001,Active,2028-12-31,2023-01-10,2023-02-15,120.50,50,false,8,0.002,100,3,false
+P002,EOL,2025-06-30,2022-05-20,2022-06-10,89.99,30,true,9,0.005,80,2,true
+P003,Active,2030-01-01,2023-03-01,2023-03-20,45.75,70,false,6,0.001,120,4,false
