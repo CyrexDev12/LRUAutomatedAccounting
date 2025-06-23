@@ -1,4 +1,7 @@
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+
 
 public class LRU {
     private String lruID; 
@@ -102,4 +105,20 @@ public class LRU {
     public void addPart(part p) {
         this.parts.add(p);
     }
+
+    // Below are the calculations used to perform for finding the metrics for the user 
+
+
+      public double calculateRUL() {
+        LocalDate installDateToLocal = LocalDate.parse(installDate); // format: YYYY-MM-DD
+        LocalDate today = LocalDate.now();
+        long daysUsed = ChronoUnit.DAYS.between(installDateToLocal, today);
+        double yearsUsed = daysUsed / 365.25; // account for leap years
+        
+        double rul = expectedLife - yearsUsed;
+        
+        return Math.round(rul * 100.0) / 100.00;
+    }
+
+
 }

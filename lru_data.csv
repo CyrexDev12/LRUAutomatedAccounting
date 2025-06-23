@@ -1,2 +1,2 @@
 lruID,name,platform,installDate,expectedLife,status,location,notes,partIDs
-ADCP2-001,ADCP2,F-35,2020-06-15,10,true,AZ75,Main mission computer,P001;P002;P003
+ADCP2-001,ADCP2,F-35,2020-06-15,10,true,AZ75,"Main mission computer",P001;P002;P003

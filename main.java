@@ -8,8 +8,8 @@ public class main {
         Scanner scnr = new Scanner(System.in);
 
         // File paths
-        String LRUdataFilePath = "C:\\Users\\H604879\\Desktop\\VsCodeProjects\\Workspace\\JavaProject\\lru_data.csv";
-        String PartDataFilepath = "C:\\Users\\H604879\\Desktop\\VsCodeProjects\\Workspace\\JavaProject\\part_data.csv";
+        String LRUdataFilePath = "lru_data.csv";
+        String PartDataFilepath = "part_data.csv";
 
         // Load part data and build part map
         ArrayList<part> partList = PartReader.readParts(PartDataFilepath);
@@ -96,6 +96,49 @@ public class main {
         // TODO: Provide more data to show the user on the parts, for example the inventory, etc...
 
         // TODO: Add metric calculations here
+        // Calculations: Remaning Useful Life, Obsolescence Risk Score
+
+        System.out.println("Would you like to run metrics on the LRU? Or a specific part in the LRU?\n Enter 1 to continue");
+        
+        int userSelectionMetric = scnr.nextInt(); 
+
+        switch (userSelectionMetric) {
+            case 1:
+                runMetricsLRU(scnr, selectedLRU);
+                break;
+            case 2: 
+                System.out.println("This feature has not been implented yet");
+                break;
+        
+            default:
+                System.out.println("Error: Invalid selection");
+                break;
+        }
+
+
+
+
+    }
+
+
+
+    public static void runMetricsLRU(Scanner scnr, LRU SelectedLRU) {
+        System.out.println("What metrics would you like to run on " + SelectedLRU.getName());
+
+        // Remaining useful life = Expected Life - (Current Year - Install Year)
+        System.out.println("1. (RUL) Remaning Useful life"); 
+
+        int userMetricSelection = scnr.nextInt(); 
+
+        switch (userMetricSelection) {
+            case 1:
+                System.out.println("The expected Remaining Useful Life of the LRU is: " + SelectedLRU.calculateRUL());
+                break;
+        
+            default:
+                break;
+        }
+
     }
 
     public static void addNewLRU(Scanner scnr, ArrayList<LRU> lruList) {
