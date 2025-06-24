@@ -120,5 +120,47 @@ public class LRU {
         return Math.round(rul * 100.0) / 100.00;
     }
 
+    public String calculateObsolescenceRiskScore() {
+        if (parts.isEmpty()) {
+            return "Error! Parts list is empty for " + name;
+        }
+
+        double totalScore = 0.0;
+
+        for (part p : parts) {
+            String status = p.getLifeCycleStatus().toLowerCase();
+
+            switch (status) {
+                case "active":
+                    totalScore += 0;
+                    break;
+                case "nrnd":
+                    totalScore += 1;
+                    break;
+                case "eol":
+                    totalScore += 2;
+                    break;
+            
+                default:
+                    totalScore += 1.5;
+                    break;
+            }
+        }
+        Double calculatedScore = (double) Math.round( totalScore / parts.size());
+        // Determine risk based on calculated score 
+
+        if (calculatedScore == 0) {
+            return "Low risk (all parts active), calculated score : " + calculatedScore;
+        } else if (calculatedScore > 0 && calculatedScore <= 0.9) {
+            return "Low risk (mostly active parts, maybe one NRND)" + calculatedScore;
+        } else if (calculatedScore > 0.9 && calculatedScore <= 1.4) {
+            return "Moderate risk, (Mix of active and NRND, or a few EOL parts), calculated score " + calculatedScore;
+        } else if (calculatedScore > 1.4 && calculatedScore <= 1.9) {
+            return "High Risk (Several EOL parts or many NRND), calculated score " + calculatedScore;
+        }
+        return "Critical Risk (All parts are EOL), calculated score " + calculatedScore;
+        
+    }
+
 
 }

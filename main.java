@@ -126,7 +126,9 @@ public class main {
         System.out.println("What metrics would you like to run on " + SelectedLRU.getName());
 
         // Remaining useful life = Expected Life - (Current Year - Install Year)
-        System.out.println("1. (RUL) Remaning Useful life"); 
+        System.out.println("1. (RUL) Remaning Useful life\n2. (ORS) Obsolescense Risk Score"); 
+
+        // TODO: Connect to python and integrate visual graphs and representations for visual aid
 
         int userMetricSelection = scnr.nextInt(); 
 
@@ -134,6 +136,8 @@ public class main {
             case 1:
                 System.out.println("The expected Remaining Useful Life of the LRU is: " + SelectedLRU.calculateRUL());
                 break;
+            case 2: 
+                System.out.println("The obsolescense risk score of the LRU calculated is " + SelectedLRU.calculateObsolescenceRiskScore());
         
             default:
                 break;
