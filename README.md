@@ -1,0 +1,1 @@
+This is a dummy Accounting software I made, that makes accounting for LRU's and their assembly parts a lot easier. Additionally, this project provides useful statistical information for engineers, regarding to obselescence specifically. 
